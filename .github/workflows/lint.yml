@@ -4,21 +4,19 @@ on:
       - main
   pull_request:
 
-name: Unit Tests
+name: Lint
 
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: recursive
-
-      - name: Install Foundry
-        uses: onbjerg/foundry-toolchain@v1
+      - uses: actions/setup-node@v2
         with:
-          version: nightly
+          node-version: ${{ matrix.node-version }}
 
-      - name: Run tests
-        run: forge test -vvv
+      - run: npm install -g solhint
+      - run: solhint './src/**/*.sol'

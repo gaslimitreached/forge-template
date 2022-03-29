@@ -3,6 +3,6 @@ install:
 build:
 	forge build
 lint:
-	solhint ./src/**.sol
+	solhint './src/**/*.sol'
 test:
 	forge test -vvvv
