@@ -20,7 +20,7 @@ install :;
 update:; forge update
 
 # Builds
-build  :; forge clean && forge build --optimize --optimize-runs 200
+build  :; forge clean && forge build --optimize --optimizer-runs 200
 
 # Lint
 lint :; solhint './src/**/*.sol'
